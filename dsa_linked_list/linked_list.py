@@ -52,7 +52,7 @@ class LinkedList:
 
             return count
 
-    def insert_at(self, val: Union[str, int], idx: int):
+    def insert_at(self, idx: int, val: Union[str, int]):
         if self.head is None:
             print("Linked list is empty")
         else:
@@ -108,20 +108,13 @@ class LinkedList:
 
 if __name__ == "__main__":
     ll = LinkedList()
+    ll.insert_values(["banana","mango","grapes","orange"])
     ll.print()
-    print(ll.get_length())
+    ll.insert_at(1,"blueberry")
+    ll.print()
+    ll.remove_at(2)
+    ll.print()
+
+    ll.insert_values([45,7,12,567,99])
     ll.insert_at_end(67)
-    ll.insert_at_beginning(7)
-    ll.insert_at_end(109)
-    print(ll.get_length())
-    ll.print()
-    ll.insert_at("Theo", 0)
-    ll.insert_at("Phil", ll.get_length() - 1)
-    ll.insert_at(20, 3)
-    ll.print()
-    ll.remove_at(0)
-    ll.print()
-    ll.remove_at(ll.get_length() - 1)
-    ll.print()
-    ll.insert_values(["Theo", "Phil", "will", "be", "great"])
     ll.print()
