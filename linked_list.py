@@ -1,5 +1,5 @@
 #!/bin/usr/env python3
-from typing import Union, Type
+from typing import Union, Type, List
 
 
 class Node:
@@ -100,6 +100,11 @@ class LinkedList:
             else:
                 print("out of range!")
 
+    def insert_values(self, data_list: List[Union[str, int]]):
+        self.head = None
+        for data in data_list:
+            self.insert_at_end(data)
+
 
 if __name__ == "__main__":
     ll = LinkedList()
@@ -114,5 +119,9 @@ if __name__ == "__main__":
     ll.insert_at("Phil", ll.get_length() - 1)
     ll.insert_at(20, 3)
     ll.print()
+    ll.remove_at(0)
+    ll.print()
     ll.remove_at(ll.get_length() - 1)
+    ll.print()
+    ll.insert_values(["Theo", "Phil", "will", "be", "great"])
     ll.print()
