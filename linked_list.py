@@ -77,6 +77,29 @@ class LinkedList:
             else:
                 print("out of range!")
 
+    def remove_at(self, idx: int) -> None:
+        if self.head is None:
+            print("Linked list is empty")
+
+        else:
+            ll_size = int(self.get_length())
+            if idx in range(0, ll_size):
+                count = 0
+                itr = self.head
+                prev = None
+
+                while count != idx:
+                    count += 1
+                    prev = itr
+                    itr = itr.next
+
+                if prev is None:
+                    self.head = itr.next
+                else:
+                    prev.next = itr.next
+            else:
+                print("out of range!")
+
 
 if __name__ == "__main__":
     ll = LinkedList()
@@ -90,4 +113,6 @@ if __name__ == "__main__":
     ll.insert_at("Theo", 0)
     ll.insert_at("Phil", ll.get_length() - 1)
     ll.insert_at(20, 3)
+    ll.print()
+    ll.remove_at(ll.get_length() - 1)
     ll.print()
