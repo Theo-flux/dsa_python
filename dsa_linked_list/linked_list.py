@@ -135,7 +135,6 @@ class LinkedList:
             itr = self.head
             prev = None
             while itr:
-                next_node = itr.next
                 if itr.data == data:
                     break
                 prev = itr
