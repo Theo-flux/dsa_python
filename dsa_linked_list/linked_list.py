@@ -105,16 +105,65 @@ class LinkedList:
         for data in data_list:
             self.insert_at_end(data)
 
+    def insert_after_value(
+        self, data_after: Union[str, int], data_to_insert: Union[str, int]
+    ):
+        # Search for first occurance of data_after value in linked list
+        # Now insert data_to_insert after data_after node
+        if self.head is None:
+            print("Linked list is empty")
+        else:
+            itr = self.head
+            while itr:
+                if itr.data == data_after:
+                    break
+                itr = itr.next
+            if itr:
+                prev = itr
+                next_node = itr.next
+                node = Node(data_to_insert, next_node)
+                prev.next = node
+            else:
+                print("data not found!")
+
+    def remove_by_value(self, data: Union[str, int]):
+        # Remove first node that contains data
+        pass
+        if self.head is None:
+            print("Linked list is empty")
+        else:
+            itr = self.head
+            prev = None
+            while itr:
+                next_node = itr.next
+                if itr.data == data:
+                    break
+                prev = itr
+                itr = itr.next
+            if itr:
+                if prev:
+                    prev.next = itr.next
+                else:
+                    self.head = itr.next
+            else:
+                print("data not found!")
+
 
 if __name__ == "__main__":
     ll = LinkedList()
-    ll.insert_values(["banana","mango","grapes","orange"])
+    ll.insert_values(["banana", "mango", "grapes", "orange"])
     ll.print()
-    ll.insert_at(1,"blueberry")
+    ll.insert_after_value("mango", "apple")
     ll.print()
-    ll.remove_at(2)
+    ll.remove_by_value("orange")
     ll.print()
-
-    ll.insert_values([45,7,12,567,99])
-    ll.insert_at_end(67)
+    ll.remove_by_value("figs")
+    ll.print()
+    ll.remove_by_value("apple")
+    ll.print()
+    ll.remove_by_value("mango")
+    ll.print()
+    ll.remove_by_value("banana")
+    ll.print()
+    ll.remove_by_value("grapes")
     ll.print()
