@@ -1,5 +1,5 @@
 #!/bin/usr/env python3
-from typing import Type, Union
+from typing import Type, Union, List
 
 
 class Node:
@@ -120,6 +120,52 @@ class DoubleLinkedList:
             else:
                 print("out of range!")
 
+    def insert_values(self, data_list: List[Union[str, int]]):
+        self.head = None
+        for data in data_list:
+            self.insert_at_end(data)
+
+    def insert_after_value(
+        self, data_after: Union[str, int], data_to_insert: Union[str, int]
+    ):
+        if self.head is None:
+            print("Linked list is empty")
+        else:
+            itr = self.head
+            while itr:
+                if itr.data == data_after:
+                    break
+                itr = itr.next
+
+            if itr:
+                new_node = Node(data_to_insert, itr.next, itr)
+                itr.next = new_node
+                itr.next.prev = new_node
+
+            else:
+                print("data not found!")
+
+    def print_forward(self):
+        # This method prints list in forward direction. Use node.next
+        self.print()
+
+    def print_backward(self):
+        # Print linked list in reverse direction. Use node.prev for this.
+        if self.head is None:
+            print("Linked list is empty")
+        else:
+            itr = self.head
+            list_str = ""
+            arr = []
+
+            while itr:
+                arr.insert(0, itr.data)
+                itr = itr.next
+
+            for i in range(0, len(arr)):
+                list_str += str(arr[i]) + ("<-->" if i < len(arr) - 1 else "")
+            print(list_str)
+
 
 if __name__ == "__main__":
     dll = DoubleLinkedList()
@@ -148,7 +194,22 @@ if __name__ == "__main__":
     dll.print()
     dll.remove_at(0)
     dll.print()
-    # print(dll.get_length())
-    # dll.remove_at(0)
-    # dll.print()
-    # print(dll.get_length())
+    dll.insert_values(["banana", "mango", "grapes", "orange"])
+    dll.print()
+    dll.insert_after_value("mango", "apple")
+    print(dll.get_length())
+    dll.remove_at(0)
+    dll.print()
+    dll.insert_after_value("orange", "cherry")
+    dll.print()
+    dll.print_forward()
+    dll.print_backward()
+    print(dll.get_length())
+    dll.remove_at(0)
+    dll.print()
+    dll.remove_at(0)
+    dll.print()
+    dll.remove_at(1)
+    dll.print()
+    dll.remove_at(0)
+    dll.print()
