@@ -8,7 +8,7 @@ class Node:
         self.next = next
 
 
-class LinkedList:
+class SinglyLinkedList:
     def __init__(self):
         self.head = None
 
@@ -25,7 +25,7 @@ class LinkedList:
             print(list_str)
 
     def insert_at_beginning(self, val: Union[str, int]) -> None:
-        node = Node(val, self.head)
+        node = Node(val)
         self.head = node
 
     def insert_at_end(self, val: Union[str, int]) -> None:
@@ -149,7 +149,7 @@ class LinkedList:
 
 
 if __name__ == "__main__":
-    ll = LinkedList()
+    ll = SinglyLinkedList()
     ll.insert_values(["banana", "mango", "grapes", "orange"])
     ll.print()
     ll.insert_after_value("mango", "apple")
